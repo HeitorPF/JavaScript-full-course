@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+</head>
+<body>
+
+  <p>
+    <button onclick="calculation = updatecalculation(calculation, '1')">1</button>
+
+    <button onclick="calculation = updatecalculation(calculation, '2')">2</button>
+
+    <button onclick="calculation = updatecalculation(calculation, '3')">3</button>
+
+    <button onclick="calculation = updatecalculation(calculation, ' + ')">+</button>
+  </p>
+
+  <p>
+    <button onclick="calculation = updatecalculation(calculation, '4')">4</button>
+
+    <button onclick="calculation = updatecalculation(calculation, '5')">5</button>
+
+    <button onclick="calculation = updatecalculation(calculation, '6')">6</button>
+
+    <button onclick="calculation = updatecalculation(calculation, ' - ')">-</button>
+  </p>
+
+  <p>
+    <button onclick="calculation = updatecalculation(calculation, '7')">7</button>
+
+    <button onclick="calculation = updatecalculation(calculation, '8')">8</button>
+
+    <button onclick="calculation = updatecalculation(calculation, '9')">9</button>
+
+    <button onclick="calculation = updatecalculation(calculation, ' / ')">/</button>
+  </p>
+
+  <p>
+    <button onclick="calculation = updatecalculation(calculation, '.')">.</button>
+
+    <button onclick="calculation = updatecalculation(calculation, '0')">0</button>
+
+    <button onclick="calculation = calculate(calculation)">=</button>
+
+    <button onclick="calculation = updatecalculation(calculation, ' * ')">*</button>
+  </p>
+
+  <script>
+    let calculation =  JSON.parse(localStorage.getItem('calculation')) || ''
+    let result
+    console.log(calculation)
+
+    function updatecalculation(calculation, button) {
+      calculation = calculation + button
+      console.log(calculation)
+      localStorage.setItem('calculation', JSON.stringify(calculation))
+      return calculation
+    }
+
+    function calculate(calculation) {
+      let result =  eval(calculation)
+      console.log(`${calculation} = ${result}`)
+      calculation = ''
+      localStorage.removeItem('calculation')
+      return calculation
+    }
+  </script>
+</body>
+</html>
