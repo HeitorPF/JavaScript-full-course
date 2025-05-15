@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(40, 40, 40);
+  color: rgb(255, 255, 255);
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+h1 {
+  margin: 2rem 0;
+}
+
+.move-button {
+  background-color: transparent;
+  border: 2px, solid, #fff;
+  height: 10rem;
+  width: 10rem;
+  border-radius: 5rem;
+  margin: .5rem 1rem;
+  cursor: pointer;
+}
+
+.move-icon {
+  height: 5rem;
+}
+
+.move-icon-result {
+  height: 3rem;
+  margin: 0 1rem;
+}
+
+.result {
+  font-size: 2rem;
+  margin: 2rem 0;
+}
+
+.moves {
+  display: flex;
+  justify-content: center;
+  gap: .5rem;
+}
+
+.move1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+  width: 10rem;
+}
+
+.move2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  width: 10rem;
+}
+
+.score {
+  margin: 1rem;
+  font-size: 1.5rem;
+}
+
+.reset-button {
+  border: none;
+  padding: .5rem;
+  background-color: rgb(250, 255, 0);
+  cursor: pointer;
+  outline: none;
+  height: 40px;
+}
+
+.go-back-button {
+  border: none;
+  padding: .5rem;
+  background-color: rgb(220, 0, 0);
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  height: 40px;
+}
