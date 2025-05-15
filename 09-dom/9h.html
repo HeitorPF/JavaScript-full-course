@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>9h exercise</title>
+</head>
+<body>
+  <input type="text" onkeyup="display(event)">
+
+  <p></p>
+
+  <script>
+    function display() {
+      const inputElement = document.querySelector('input')
+      const nome = inputElement.value
+
+      document.querySelector('p').innerHTML = `${nome}`
+    }
+
+  </script>
+</body>
+</html>

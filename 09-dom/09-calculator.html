@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+</head>
+<body>
+
+  <p class="js-calculation"></p>
+
+  <p>
+    <button onclick="updatecalculation('1')">1</button>
+
+    <button onclick="updatecalculation('2')">2</button>
+
+    <button onclick="updatecalculation('3')">3</button>
+
+    <button onclick="updatecalculation(' + ')">+</button>
+  </p>
+
+  <p>
+    <button onclick="updatecalculation('4')">4</button>
+
+    <button onclick="updatecalculation('5')">5</button>
+
+    <button onclick="updatecalculation('6')">6</button>
+
+    <button onclick="updatecalculation(' - ')">-</button>
+  </p>
+
+  <p>
+    <button onclick="updatecalculation('7')">7</button>
+
+    <button onclick="updatecalculation('8')">8</button>
+
+    <button onclick="updatecalculation('9')">9</button>
+
+    <button onclick="updatecalculation(' / ')">/</button>
+  </p>
+
+  <p>
+    <button onclick="updatecalculation('.')">.</button>
+
+    <button onclick="updatecalculation('0')">0</button>
+
+    <button onclick="calculate()">=</button>
+
+    <button onclick="updatecalculation(' * ')">*</button>
+  </p>
+
+  <script>
+    let calculation =  JSON.parse(localStorage.getItem('calculation')) || ''
+    let result
+    displayCalculation()
+    console.log(calculation)
+
+    function updatecalculation(button) {
+      calculation = calculation + button
+      displayCalculation()
+      localStorage.setItem('calculation', JSON.stringify(calculation))
+      return calculation
+    }
+
+    function calculate() {
+      calculation =  eval(calculation)
+      displayCalculation()
+      calculation = ''
+      localStorage.removeItem('calculation')
+      return calculation
+    }
+
+    function displayCalculation() {
+        document.querySelector('.js-calculation').innerHTML = calculation
+      }
+  </script>
+</body>
+</html>
