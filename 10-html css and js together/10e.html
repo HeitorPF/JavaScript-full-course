@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10e exercise</title>
+
+  <style>
+    button {
+      padding: .5rem 1rem;
+      background-color: #000;
+      color: #FFF;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .is-toggled {
+      background-color: rgb(230, 230, 230);
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <button id="gaming" onclick="toggleGaming('gaming')">Gaming</button>
+  <button id="music" onclick="toggleGaming('music')">Music</button>
+  <button id="tech" onclick="toggleGaming('tech')">Tech</button>
+
+  <script>
+    function toggleGaming(id) {
+      const gamingButtonElement = document.querySelector(`#${id}`)
+      if(gamingButtonElement.classList.contains('is-toggled')){
+        gamingButtonElement.classList.remove('is-toggled')
+      }
+      else {
+        gamingButtonElement.classList.add('is-toggled')
+      }
+    }
+  </script>
+</body>
+</html>

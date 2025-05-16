@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
+  color: #FFF;
+}
+
+.calculation {
+  margin: .5rem;
+  height: 6rem;
+  font-size: 5rem;
+}
+
+button {
+  border: none;
+  height: 5rem;
+  width: 5rem;
+  border-radius: 2.5rem;
+  margin: .25rem;
+  font-size: 1.5rem;
+}
+
+.number {
+  background-color: rgb(80, 80, 80);
+  color: #FFF;
+}
+
+.operator {
+  background-color: rgb(223, 156, 0);
+  color: #000;
+}
