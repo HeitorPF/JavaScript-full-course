@@ -1,5 +1,11 @@
 function countWords(words) {
   const obj = {}
+
+  for(let i = 0; i < words.length; i++) { // menor e menos complexo
+    obj[words[i]] ? obj[words[i]] ++ : obj[words[i]] = 1
+  }
+
+  /* código que eu fiz (maior em código e mais complexo)
   count = 0
   for(let x = 0; x < words.length; x++) {
     count = 0
@@ -10,6 +16,7 @@ function countWords(words) {
       }
     }
   }
+  */
   
   return obj
 }
