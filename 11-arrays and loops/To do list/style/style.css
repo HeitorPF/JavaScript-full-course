@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 2rem;
+  background-color: #bcbcbc;
+}
+
+.todo-grid, .add-todo-grid {
+  display: grid;
+  grid-template-columns: 10rem 10rem 5rem;
+  
+  column-gap: .5rem;
+  row-gap: .25rem;
+}
+
+.todo-grid {
+  margin-top: 1rem;
+  align-items: center;
+}
+
+.add-button {
+  padding: .5rem;
+  background-color: #2cd62c;
+}
+
+.delete-button {
+  padding: .5rem;
+  background-color: #d5211e;
+}
