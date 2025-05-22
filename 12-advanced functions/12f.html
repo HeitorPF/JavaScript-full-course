@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12f exercise</title>
+</head>
+<body>
+  <button class="js-button" onclick="
+    const addedElement = document.querySelector('.js-added-message')
+    addedElement.innerHTML = 'added'
+    clearTimeout(time)
+    time = setTimeout(function() {
+      addedElement.innerHTML = ''
+    }, 1000)
+  ">Add to cart</button>
+
+    <p class="js-added-message"></p>
+  <script>
+    let time
+  </script>
+</body>
+</html>
