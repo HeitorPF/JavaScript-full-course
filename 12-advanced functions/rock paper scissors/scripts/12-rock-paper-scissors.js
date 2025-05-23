@@ -7,6 +7,40 @@ let score = JSON.parse(localStorage.getItem('score')) || {
 let isAutoPlaying = false
 let intervalId
 
+document.querySelector('.js-rock-button').addEventListener('click', () => {
+  playGame('rock')
+})
+
+document.querySelector('.js-paper-button').addEventListener('click', () => {
+  playGame('paper')
+})
+
+document.querySelector('.js-scissors-button').addEventListener('click', () => {
+  playGame('scissors')
+})
+
+document.querySelector('.js-reset-button').addEventListener('click', () => {
+  displayResetConfirmation()
+})
+
+document.querySelector('.js-auto-play-button').addEventListener('click', () => {
+  autoPlay()
+})
+
+document.body.addEventListener('keydown', (event) => {
+  if(event.key === 'r') {
+    playGame('rock')
+  } else if(event.key === 'p') {
+    playGame('paper')
+  } else if (event.key === 's') {
+    playGame('scissors')
+  } else if (event.key === 'a') {
+    autoPlay()
+  } else if(event.key === 'Backspace'){
+    displayResetConfirmation()
+  }
+})
+
 updateScoreElement()
 
 function pickComputerMove() {
@@ -86,7 +120,25 @@ function updateScoreElement() {
   document.querySelector('.js-score').innerHTML = `wins: ${score.wins}, Ties: ${score.ties}, Losses: ${score.losses}`
 }
 
+function displayResetConfirmation() {
+  resetConfirmationElement = document.querySelector('.js-confirm-reset')
+  resetConfirmationElement.innerHTML = `
+  <p class="confirmation-paragraph">Are you sure you want to reset the score?</p>
+  <button class="js-yes-reset-button confirmation-button">Yes</button>
+  <button class="js-no-reset-button confirmation-button">No</button>
+  `
+  document.querySelector('.js-yes-reset-button').addEventListener('click', () => {
+    resetScore()
+    resetConfirmationElement.innerHTML = ''
+  })
+
+  document.querySelector('.js-no-reset-button').addEventListener('click', () => {
+    resetConfirmationElement.innerHTML = ''
+  })
+}
+
 function resetScore() {
+  
   score.wins = 0
   score.ties = 0
   score.losses = 0
@@ -97,13 +149,16 @@ function resetScore() {
 }
 
 function autoPlay() {
+  autoPlayButtonElement = document.querySelector('.js-auto-play-button')
   if(!isAutoPlaying) {
-    intervalId = setInterval(function() {
+    intervalId = setInterval(() => {
       playGame(pickComputerMove())
     }, 1000)
+    autoPlayButtonElement.innerHTML = 'Stop Playing'
     isAutoPlaying = true
   } else {
     clearInterval(intervalId)
+    autoPlayButtonElement.innerHTML = 'Auto Play'
     isAutoPlaying = false
   }
   

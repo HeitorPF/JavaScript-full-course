@@ -1,19 +1,30 @@
 const todoList = JSON.parse(localStorage.getItem('todo')) || []
 renderTodoList()
 
+document.querySelector('.js-add-button').addEventListener('click', () => {
+    addTodo()
+  })
+
 function renderTodoList() {
   let todoListHTML = ''
   
-  todoList.forEach(function(TodoObject, index) {
+  todoList.forEach((TodoObject, index) => {
     const {name, dueDate} = TodoObject
     const html = `
       <div>${name}</div>
       <div>${dueDate}</div>
-      <button class="delete-button" onclick="removeTodo(${index})">Delete</button>`
+      <button class="delete-button js-delete-button">Delete</button>`
     todoListHTML += html
   })
 
   document.querySelector('.js-todo-list').innerHTML = todoListHTML
+
+  document.querySelectorAll('.js-delete-button').forEach((deleteButton, index) => {
+    deleteButton.addEventListener('click', () => {
+      removeTodo(index)
+    })
+  })
+
 }
 
 function addTodo(){

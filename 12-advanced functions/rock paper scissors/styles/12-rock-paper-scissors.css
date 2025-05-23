@@ -66,7 +66,7 @@ h1 {
   font-size: 1.5rem;
 }
 
-.reset-button, .auto-play-button {
+.reset-button, .auto-play-button{
   border: none;
   padding: .5rem;
   background-color: rgb(255, 255, 255);
@@ -74,3 +74,19 @@ h1 {
   outline: none;
   height: 40px;
 }
+
+.confirmation-paragraph {
+  margin: 2rem 1rem;
+  display: inline-block;
+}
+
+.confirmation-button {
+  display: inline-block;
+  border: none;
+  padding: .5rem;
+  background-color: rgb(255, 255, 255);
+  cursor: pointer;
+  outline: none;
+  width: 4rem;
+}
+
