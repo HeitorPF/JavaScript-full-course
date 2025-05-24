@@ -656,5 +656,25 @@ const products = [
       "apparel",
       "mens"
     ]
+  },
+  { // Produto adicionado
+    id: "id0",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2IyvltyDDrMnEPzwJmqEXnd3ZP3iO5nTT9A&s",
+    name: "Mouse Bright",
+    rating: {
+      stars: 3,
+      count: 50,
+    },
+    priceCents: 2899
+  },
+  { // Produto adicionado
+    id: "id1",
+    image: "https://images-americanas.b2w.io/produtos/7237593844/imagens/fone-de-ouvido-sem-fio-air-para-samsung-s21/7237593887_1_large.jpg",
+    name: "Fone de ouvido sem fio Air",
+    rating: {
+      stars: 4,
+      count: 84,
+    },
+    priceCents: 4799
   }
 ];
