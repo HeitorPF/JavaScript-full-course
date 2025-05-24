@@ -1,4 +1,5 @@
 let productsHTML = ''
+let timeOut
 
 products.forEach((product) => {
   productsHTML += `
@@ -62,6 +63,8 @@ document.querySelectorAll('.js-add-to-cart-button').forEach((buttonElement) => {
     const quantity = Number(quantitySeletorElement.value)
     const addedElement = document.querySelector(`.js-added-to-cart-${productId}`)
 
+    clearTimeout(timeOut)
+
     let matchingItem
     cart.forEach((item) => {
       if(productId === item.productId) {
@@ -85,7 +88,7 @@ document.querySelectorAll('.js-add-to-cart-button').forEach((buttonElement) => {
     })
     document.querySelector('.js-cart-quantity').innerHTML = cartQuantity
     addedElement.classList.add('opacity1')
-    setTimeout(() => {
+    timeOut = setTimeout(() => {
       addedElement.classList.remove('opacity1')
     }, 2000)
     console.log(cart)
