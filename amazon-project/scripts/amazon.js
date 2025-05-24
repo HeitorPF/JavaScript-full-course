@@ -1,5 +1,4 @@
 let productsHTML = ''
-let timeOut
 
 products.forEach((product) => {
   productsHTML += `
@@ -57,6 +56,7 @@ products.forEach((product) => {
 document.querySelector('.js-products-grid').innerHTML = productsHTML
 
 document.querySelectorAll('.js-add-to-cart-button').forEach((buttonElement) => {
+  let timeOut
   buttonElement.addEventListener('click', () => {
     const { productId } = buttonElement.dataset
     const quantitySeletorElement = document.querySelector(`.js-quantity-selector-${productId}`)
