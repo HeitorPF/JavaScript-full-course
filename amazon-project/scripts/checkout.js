@@ -100,9 +100,7 @@ document.querySelector('.js-order-summary').innerHTML = cartSummaryHTML
 document.querySelectorAll('.js-delete-link').forEach((deleteLinkElement) => {
   deleteLinkElement.addEventListener('click', () => {
     const productId = deleteLinkElement.dataset.productId
-    removeFromCart(productId)
-    document.querySelector(`.js-cart-item-container-${productId}`).remove()
-    updateCartQuantity()
+    removeProduct(productId)
   })
 })
 
@@ -114,15 +112,19 @@ document.querySelectorAll('.js-update-quantity-link').forEach((updateLinkElement
 })
 
 document.querySelectorAll('.js-save-quantity-link').forEach((saveLinkElement) => {
+  const productId = saveLinkElement.dataset.productId
+  const inputElement = document.querySelector(`.js-quantity-input-${productId}`)
+  
+  inputElement.addEventListener('keydown', (event) => {
+    if(event.key === 'Enter'){
+      const value = Number(inputElement.value)
+      getInputValue(productId, value)
+    }
+  })
+
   saveLinkElement.addEventListener('click', () => {
-    const productId = saveLinkElement.dataset.productId
-    const inputElement = document.querySelector(`.js-quantity-input-${productId}`)
     const value = Number(inputElement.value)
-    console.log(value)
-    updateQuantity(productId, value)
-    updateCartQuantity()
-    document.querySelector(`.js-quantity-label-${productId}`).innerHTML = value
-    document.querySelector(`.js-cart-item-container-${productId}`).classList.remove('is-editing-quantity')
+    getInputValue(productId, value)
   })
 })
 
@@ -131,4 +133,29 @@ updateCartQuantity()
 function updateCartQuantity(){
   const quantity = calculateCartQuantity()
   document.querySelector('.js-return-to-home-link').innerHTML = `${quantity} items`
+}
+
+function getInputValue(productId, value){
+  if(value >= 0 && value < 1000){
+    
+    if(value === 0){
+      removeProduct(productId)
+    }
+    else{
+      updateQuantity(productId, value)
+      updateCartQuantity()
+      document.querySelector(`.js-quantity-label-${productId}`).innerHTML = value
+      document.querySelector(`.js-cart-item-container-${productId}`).classList.remove('is-editing-quantity')
+    }
+    
+  }
+  else {
+    alert("invalid value")
+  }
+}
+
+function removeProduct(productId){
+  removeFromCart(productId)
+  document.querySelector(`.js-cart-item-container-${productId}`).remove()
+  updateCartQuantity()
 }
