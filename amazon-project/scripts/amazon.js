@@ -1,4 +1,4 @@
-import { cart } from '../data/cart.js'
+import { cart, addToCart } from '../data/cart.js'
 import { products } from '../data/products.js'
 
 let productsHTML = ''
@@ -61,35 +61,16 @@ document.querySelector('.js-products-grid').innerHTML = productsHTML
 document.querySelectorAll('.js-add-to-cart-button').forEach((buttonElement) => {
   let timeOut
   buttonElement.addEventListener('click', () => {
-    const { productId } = buttonElement.dataset
+    const productId = buttonElement.dataset.productId
     const quantitySeletorElement = document.querySelector(`.js-quantity-selector-${productId}`)
     const quantity = Number(quantitySeletorElement.value)
     const addedElement = document.querySelector(`.js-added-to-cart-${productId}`)
 
     clearTimeout(timeOut)
 
-    let matchingItem
-    cart.forEach((item) => {
-      if(productId === item.productId) {
-        matchingItem = item
-      }
-    })
-
-    if(matchingItem) {
-      matchingItem.quantity += quantity
-    }
-    else {
-      cart.push({
-        productId,
-        quantity
-      })
-    }
-
-    let cartQuantity = 0
-    cart.forEach((item) => {
-      cartQuantity += item.quantity
-    })
-    document.querySelector('.js-cart-quantity').innerHTML = cartQuantity
+    addToCart(productId, quantity);
+    updateCartQuantity();
+    
     addedElement.classList.add('opacity1')
     timeOut = setTimeout(() => {
       addedElement.classList.remove('opacity1')
@@ -97,3 +78,12 @@ document.querySelectorAll('.js-add-to-cart-button').forEach((buttonElement) => {
     console.log(cart)
   })
 })
+
+function updateCartQuantity(){
+  let cartQuantity = 0
+  cart.forEach((CartItem) => {
+    cartQuantity += CartItem.quantity
+  })
+  document.querySelector('.js-cart-quantity').innerHTML = cartQuantity
+}
+
