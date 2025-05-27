@@ -13,7 +13,6 @@ if(!cart){
   ]
 }
 
-
 function saveToStorage(){
   if(cart.length === 0){
     localStorage.removeItem('cart')
@@ -56,4 +55,21 @@ export function removeFromCart(productId){
   cart = newCart
   saveToStorage()
   
+}
+
+export function calculateCartQuantity(){
+  let cartQuantity = 0
+  cart.forEach((CartItem) => {
+    cartQuantity += CartItem.quantity
+  })
+  return cartQuantity
+}
+
+export function updateQuantity(productId, newQuantity){
+  cart.forEach((cartItem) => {
+    if(cartItem.productId === productId){
+      cartItem.quantity = newQuantity
+    }
+  })
+  saveToStorage()
 }
