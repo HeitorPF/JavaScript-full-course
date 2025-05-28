@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>15a exercise</title>
+  <style>
+    body {
+      background-color: black;
+      color: aliceblue;
+    }
+  </style>
+</head>
+<body>
+  <h1>15a exercise</h1>
+
+  <h2>15a</h2>
+  <p class="js-15a"></p>
+
+  <h2>15b</h2>
+  <p class="js-15b"></p>
+
+  <h2>15c</h2>
+  <p class="js-15c"></p>
+
+  <h2>15d</h2>
+  <p class="js-15d"></p>
+
+  <h2>15e</h2>
+  <p class="js-15e"></p>
+
+
+
+  <script type="module">
+    import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js'
+    import  isSatSun from './funcIsWeekend.js'
+    
+    const today = dayjs()
+
+    const exercise15a = today.add(5,'day').format('MMMM DD')
+    document.querySelector('.js-15a').innerHTML = exercise15a
+
+
+    const exercise15b = today.add(1,'month').format('MMMM DD')
+    document.querySelector('.js-15b').innerHTML = exercise15b
+
+
+    const exercise15c = today.subtract(1,'month').format('MMMM DD')
+    document.querySelector('.js-15c').innerHTML = exercise15c
+
+
+    const exercise15d = today.format('dddd')
+    document.querySelector('.js-15d').innerHTML = exercise15d
+
+
+    const exercise15e = today.format('dddd')
+    isSatSun(exercise15e)
+
+  </script>
+</body>
+</html>
