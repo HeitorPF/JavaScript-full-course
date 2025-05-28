@@ -76,7 +76,6 @@ document.querySelectorAll('.js-add-to-cart-button').forEach((buttonElement) => {
     timeOut = setTimeout(() => {
       addedElement.classList.remove('opacity1')
     }, 2000)
-    console.log(cart)
   })
 })
 

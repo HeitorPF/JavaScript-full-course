@@ -82,11 +82,8 @@ export function updateDeliveryOption(productId, deliveryOptionId){
   cart.forEach((cartItem) => {
     if(productId === cartItem.productId) {
       matchingItem = cartItem
-      console.log(matchingItem)
     }
   })
-  console.log(`updating ${matchingItem.deliveryOptionId} to ${deliveryOptionId}`)
   matchingItem.deliveryOptionId = deliveryOptionId
-  console.log(cart)
   saveToStorage()
 }

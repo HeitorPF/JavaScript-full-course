@@ -678,3 +678,15 @@ export const products = [
     priceCents: 4799
   }
 ];
+
+export function getProduct(productId){
+  let matchingProduct
+
+  products.forEach((product) => {
+    if(productId === product.id){
+      matchingProduct = product
+    }
+  })
+
+  return matchingProduct
+}
