@@ -27,3 +27,26 @@ export function getDeliveryOption(deliveryOptionId) {
   return deliveryOption || deliveryOptions[0]
 }
 
+export function calculateDeliveryDate(deliveryOption) {
+
+  const today = dayjs()
+  let todayNumber = Number(today.format('d'))
+  let daysSkipped = 0
+  let i = 0
+
+  while(i <= deliveryOption.deliverydays){
+    if(todayNumber === 7)
+      todayNumber = 0
+    if(todayNumber === 0 || todayNumber === 6){//fim de semena
+      daysSkipped++
+      i--
+    }
+    todayNumber++
+    i++
+  }
+
+  const deliverydate = today.add(deliveryOption.deliverydays + daysSkipped, 'days')
+  const dateString = deliverydate.format('dddd, MMMM D')
+
+  return dateString
+}
