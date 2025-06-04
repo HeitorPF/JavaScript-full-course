@@ -97,12 +97,3 @@ class Cart {
     this.saveToStorage()
   }
 }
-
-
-const cart = new Cart('cart-oop')
-const businessCart = new Cart('business-cart')
-
-
-
-console.log(cart)
-console.log(businessCart)
