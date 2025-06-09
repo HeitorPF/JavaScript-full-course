@@ -1,4 +1,4 @@
-import { cart, addToCart, calculateCartQuantity } from '../data/cart.js'
+import { cart } from '../data/cart-class.js'
 import { products } from '../data/products.js'
 import { formatCurrency } from './utils/money.js'
 
@@ -71,7 +71,7 @@ document.querySelectorAll('.js-add-to-cart-button').forEach((buttonElement) => {
 
     clearTimeout(timeOut)
 
-    addToCart(productId, quantity);
+    cart.addToCart(productId, quantity)
     updateCartQuantity();
     
     addedElement.classList.add('opacity1')
@@ -84,6 +84,6 @@ document.querySelectorAll('.js-add-to-cart-button').forEach((buttonElement) => {
 updateCartQuantity()
 
 function updateCartQuantity(){
-  const quantity = calculateCartQuantity()
+  const quantity = cart.calculateCartQuantity()
   document.querySelector('.js-cart-quantity').innerHTML = quantity
 }

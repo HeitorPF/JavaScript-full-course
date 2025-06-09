@@ -1,4 +1,4 @@
-import { cart, removeFromCart, calculateCartQuantity, updateQuantity, updateDeliveryOption } from '../../data/cart.js'
+import { cart } from '../../data/cart-class.js'
 import { calculateDeliveryDate, deliveryOptions, getDeliveryOption } from '../../data/deliveryOptions.js'
 import { products, getProduct } from '../../data/products.js'
 import { formatCurrency } from '../utils/money.js'
@@ -10,7 +10,7 @@ export function renderOrderSummary(){
 
   let cartSummaryHTML = ''
 
-  cart.forEach((cartItem) => {
+  cart.cartItems.forEach((cartItem) => {
     const productId = cartItem.productId
 
     const matchingProduct = getProduct(productId)
@@ -68,7 +68,7 @@ export function renderOrderSummary(){
   document.querySelectorAll('.js-delete-link').forEach((deleteLinkElement) => {
     deleteLinkElement.addEventListener('click', () => {
       const productId = deleteLinkElement.dataset.productId
-      removeFromCart(productId)
+      cart.removeFromCart(productId)
       renderPaymentSummary()
       renderOrderSummary()
       renderCheckoutHeader()
@@ -135,10 +135,10 @@ export function renderOrderSummary(){
     if(value >= 0 && value < 1000){
       
       if(value === 0){
-        removeFromCart(productId)
+        cart.removeFromCart(productId)
       }
       else{
-        updateQuantity(productId, value)
+        cart.updateQuantity(productId, value)
       }
       
     }
@@ -151,7 +151,7 @@ export function renderOrderSummary(){
     deliveryOptionElement.addEventListener('click', () => {
       const productId = deliveryOptionElement.dataset.productId
       const deliveryOptionId = deliveryOptionElement.dataset.deliveryOptionId
-      updateDeliveryOption(productId, deliveryOptionId)
+      cart.updateDeliveryOption(productId, deliveryOptionId)
       renderOrderSummary()
       renderPaymentSummary()
     })
