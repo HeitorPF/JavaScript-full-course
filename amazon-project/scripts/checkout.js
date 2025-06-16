@@ -6,21 +6,37 @@ import { loadCart } from "../data/cart.js";
 // import '../../18-backend/backend-practice.js'
 // import '../data/cart-class.js';
 
-// Terceira maneira, cria um array de promisses que rodam ao mesmo tempo
-Promise.all([
-  loadProductsFetch(),
+async function loadPage() { // função retorna uma Promise
+  await loadProductsFetch()
 
-  new Promise((resolve) => {
+  await new Promise((resolve) => {
     loadCart(() => {
       resolve()
     })
   })
 
-]).then(() => {
   renderOrderSummary()
   renderPaymentSummary()
   renderCheckoutHeader()
-})
+}
+
+loadPage()
+
+// Terceira maneira, cria um array de promisses que rodam ao mesmo tempo
+// Promise.all([
+//   loadProductsFetch(),
+
+  // new Promise((resolve) => {
+  //   loadCart(() => {
+  //     resolve()
+  //   })
+//   })
+
+// ]).then(() => {
+  // renderOrderSummary()
+  // renderPaymentSummary()
+  // renderCheckoutHeader()
+// })
 
 // Segunda maneira, espera cada promise terminar para ir para proxima
 // new Promise((resolve) => {
