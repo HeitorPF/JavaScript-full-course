@@ -1,12 +1,20 @@
 import { renderCheckoutHeader } from "./checkout/checkoutHeader.js";
 import { renderOrderSummary } from "./checkout/orderSummary.js";
 import { renderPaymentSummary } from "./checkout/paymentSummary.js";
-import { loadProductsFetch } from "../data/products.js";
+import { loadProducts, loadProductsFetch } from "../data/products.js";
+import { loadCart } from "../data/cart.js";
 // import '../../18-backend/backend-practice.js'
 // import '../data/cart-class.js';
 
+// Terceira maneira, cria um array de promisses que rodam ao mesmo tempo
 Promise.all([
   loadProductsFetch(),
+
+  new Promise((resolve) => {
+    loadCart(() => {
+      resolve()
+    })
+  })
 
 ]).then(() => {
   renderOrderSummary()
@@ -14,10 +22,17 @@ Promise.all([
   renderCheckoutHeader()
 })
 
-
+// Segunda maneira, espera cada promise terminar para ir para proxima
 // new Promise((resolve) => {
 //   loadProducts(() => {
 //     resolve()
+//   })
+
+// }).then(() => {
+//   return new Promise((resolve) => {
+//     loadCart(() => {
+//       resolve()
+//     })
 //   })
 
 // }).then(() => {
@@ -27,8 +42,13 @@ Promise.all([
 // })
 
 
+
+// primeira maneira, com callbacks. Problema, muito nesting
 // loadProducts(() => {
-  // renderOrderSummary()
-  // renderPaymentSummary()
-  // renderCheckoutHeader()
+  // loadCart(() => {
+    // renderOrderSummary()
+    // renderPaymentSummary()
+    // renderCheckoutHeader()
+  // })
+
 // })
