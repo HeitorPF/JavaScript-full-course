@@ -94,6 +94,14 @@ export function updateDeliveryOption(productId, deliveryOptionId){
   saveToStorage()
 }
 
+export async function loadCartFetch() {
+  const req = await fetch('https://supersimplebackend.dev/cart')
+  const text = await req.text()
+
+  console.log(text)
+  return text
+}
+
 export function loadCart(fun) {
   const xhr = new XMLHttpRequest()
 
